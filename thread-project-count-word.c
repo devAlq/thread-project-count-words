@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <pthread.h>
 
@@ -19,7 +18,7 @@ void *count_words_thread(void *arg) {
                     token = strtok(NULL, delim);
                 }
 
-                printf("Number of words : %d", count);
+                printf("Number of words : %d\n", count);
                 printf("Exiting...");
                 return;
 
@@ -27,12 +26,12 @@ void *count_words_thread(void *arg) {
  }}
 
     return NULL;
- 
+
 }
 
 int main() {
     char messeage[1024];
-    printf("Enter text (press Enter to submit): \n");
+    printf("Enter text (press Enter to submit):");
     fgets(messeage, sizeof(messeage), stdin);
     count_words_thread(messeage);
     return 0;
