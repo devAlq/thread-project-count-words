@@ -20,6 +20,7 @@ void *count_words_thread(void *arg) {
                 }
 
                 printf("Number of words : %d", count);
+                printf("Exiting...");
                 return;
 
 
