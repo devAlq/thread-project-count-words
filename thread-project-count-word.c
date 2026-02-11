@@ -8,7 +8,7 @@ void *count_words_thread(void *arg) {
     while (1) {
 
         // Read a line of input
-        if (fgets(arg, MAX_INPUT_SIZE, stdin) != NULL) {
+        if (arg != NULL) {
                 char* token;
                 char* delim = " \n\t";
                 token = strtok(arg, delim);
@@ -31,7 +31,7 @@ void *count_words_thread(void *arg) {
 
 int main() {
     char messeage[1024];
-    printf("Enter text (press Enter to submit):");
+    printf("Enter text (press Enter to submit):\n");
     fgets(messeage, sizeof(messeage), stdin);
     count_words_thread(messeage);
     return 0;
