@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <pthread.h>
-
+#include <string.h>
 #define MAX_INPUT_SIZE 1024
-int count = 0;
+
 
 void *count_words_thread(void *arg) {
-    while (1) {
 
         // Read a line of input
         if (arg != NULL) {
@@ -20,19 +19,26 @@ void *count_words_thread(void *arg) {
 
                 printf("Number of words : %d\n", count);
                 printf("Exiting...");
-                return;
+                return NULL;
 
 
- }}
+ }
 
     return NULL;
 
 }
 
+
+
 int main() {
+    pthread_t thread_id;
+
     char messeage[1024];
     printf("Enter text (press Enter to submit):\n");
     fgets(messeage, sizeof(messeage), stdin);
-    count_words_thread(messeage);
+    pthread_create(&thread_id, NULL, count_words_thread, messeage);
+
+    pthread_join(thread_id, NULL);
+
     return 0;
 }
